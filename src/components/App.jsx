@@ -1,4 +1,4 @@
-import React, { useState, useEffect, } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { nanoid } from 'nanoid';
 import { Form } from './Form/Form';
 import { Contacts } from './Contacts/Contacts';
@@ -15,10 +15,16 @@ export const App = () => {
       ]
   );
   const [filter, setFilter] = useState('');
-
+  const firstRender = useRef(true);
 
   useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      console.log('Первый рендер');
+      return;
+    }
     localStorage.setItem('contactsData', JSON.stringify(contacts));
+    console.log('Второй рендер ');
   }, [contacts]);
 
   const onSubmiHandler = (name, number) => {
