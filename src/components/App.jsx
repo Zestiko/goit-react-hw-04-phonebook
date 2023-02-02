@@ -62,7 +62,7 @@ export const App = () => {
 
       <h2>Contacts</h2>
       <Filter value={filter} onChange={handelChange} />
-      {<Contacts contacts={filterContacts} onDelete={handleDelete} />}
+      <Contacts contacts={filterContacts} onDelete={handleDelete} />
     </>
   );
 };
